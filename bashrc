@@ -16,6 +16,8 @@ EXCLUDED=(
   -path './.vscode/extensions' -prune -o
   -path './dev/personal/spendly/frontend/node_modules' -prune -o
   -path './Coding/Python/TODO List APP/front/node_modules' -prune -o
+  -path './dev/personal/spendly/backend/.venv' -prune -o
+  -path './Coding' -prune -o
 )
 
 # Para buscar y abrir archivos
@@ -92,3 +94,9 @@ eval "$(starship init bash)"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='\[\e[0;32m\]\u@\h:\w\$ \[\e[0m\]'
+
+# Wofi launcher scripts
+alias wofi-launch='~/.config/wofi/wofi-launcher.sh'
+alias wofi-rebuild='~/.config/wofi/build-entries.sh'
+alias wofi-edit='~/.config/wofi/edit-entries.sh'
+
