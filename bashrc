@@ -3,10 +3,12 @@
 #
 neofetch
 
-alias hconf='nvim ~/.config/hypr/hyprland.conf'
-alias rwb='pkill -x waybar || true; sleep 0.2; waybar & disown'
+alias hconf="nvim ~/.config/hypr/hyprland.conf"
+alias rwb="pkill -x waybar || true; sleep 0.2; waybar & disown"
 alias fopen="fileOpen"
 alias dopen="directoryOpen"
+alias wopen="workspaceOpen"
+alias ns="nvim -c 'source .nvim-session.vim'"
 
 # Exclusion de carpetas de busqueda para fopen y dopen
 EXCLUDED=(
@@ -14,9 +16,11 @@ EXCLUDED=(
   -path './.cache' -prune -o
   -path './.local/share/Trash' -prune -o
   -path './.vscode/extensions' -prune -o
+  -path './dev/personal/nbaShowcase/node_modules' -prune -o
   -path './dev/personal/spendly/frontend/node_modules' -prune -o
   -path './Coding/Python/TODO List APP/front/node_modules' -prune -o
   -path './dev/personal/spendly/backend/.venv' -prune -o
+  -path './.npm' -prune -o
   -path './Coding' -prune -o
 )
 
@@ -82,6 +86,11 @@ function directoryOpen() {
     fi
 }
 
+# Para abrir workspaces
+function workspaceOpen() {
+    dopen "$1" && [[ -f .nvim-session.vim ]] && nvim -c 'source .nvim-session.vim'
+}
+
 
 
 # Prompt de starship
@@ -100,3 +109,7 @@ alias wofi-launch='~/.config/wofi/wofi-launcher.sh'
 alias wofi-rebuild='~/.config/wofi/build-entries.sh'
 alias wofi-edit='~/.config/wofi/edit-entries.sh'
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
