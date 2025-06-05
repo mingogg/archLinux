@@ -90,7 +90,7 @@ window#waybar.hidden {
 #battery.critical,
 #battery.urgent {
   background-color: #ff0000;
-  color: #FFFF00;
+  color: #ffff00;
 }
 
 #battery.charging {
@@ -119,6 +119,16 @@ window#waybar.hidden {
 
 #custom-power {
   background-color: #f2cdcd;
+}
+
+#temperature {
+  color: #a6e3a1;
+  padding: 0 10px;
+}
+
+#temperature.critical {
+  color: #f38ba8;
+  font-weight: bold;
 }
 
 tooltip {

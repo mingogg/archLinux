@@ -938,7 +938,6 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
-				"html",
 				"javascript",
 				"typescript",
 				"tsx",
