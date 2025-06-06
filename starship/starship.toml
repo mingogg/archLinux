@@ -120,6 +120,10 @@ format = '[[ $symbol $branch ](fg:base bg:green)]($style)'
 [git_status]
 style = "bg:teal"
 format = '[[($all_status$ahead_behind )](fg:base bg:green)]($style)'
+conflicted = ' !${count}'
+up_to_date = ''
+untracked = ' ?${count}'
+modified = ' ~${count}'
 
 [nodejs]
 symbol = ""
