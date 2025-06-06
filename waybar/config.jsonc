@@ -11,6 +11,7 @@
         "clock"
     ],
     "modules-right": [
+	"hyprland/language",
 	"temperature",
         "memory",
         "network",
@@ -50,7 +51,7 @@
             "5": []
         }
     },
-    "memory": {
+   "memory": {
         "interval": 5,
         "format": "󰍛 {}%",
         "max-length": 10
@@ -141,5 +142,15 @@
 	"tooltip": true,
 	"critical-threshold": 80,
 	"format-critical": "🔥 {temperatureC}°C"
-    }
+    },
+
+
+
+"hyprland/language": {
+  "format": "{short}",
+  "keyboard-name": "logitech-wireless-keyboard-pid:4023"
+}
+
+
+
 }
