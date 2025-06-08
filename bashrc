@@ -1,7 +1,7 @@
 #
 # ~/.bashrc
 #
-neofetch
+#neofetch
 
 alias hconf="nvim ~/.config/hypr/hyprland.conf"
 alias rwb="pkill -x waybar || true; sleep 0.2; waybar & disown"
