@@ -10,6 +10,10 @@ alias dopen="directoryOpen"
 alias wopen="workspaceOpen"
 alias ns="nvim -c 'source .nvim-session.vim'"
 
+# TODO: Se puede hacer que wopen abra la carpeta y ejecute nvim, en lugar de wopen
+# ya que se tiene neo-tree y fuzzy finder
+
+
 # Exclusion de carpetas de busqueda para fopen y dopen
 EXCLUDED=(
   -path './.local' -prune -o
@@ -22,6 +26,11 @@ EXCLUDED=(
   -path './dev/personal/spendly/backend/.venv' -prune -o
   -path './.npm' -prune -o
   -path './Coding' -prune -o
+  -path './.tmux' -prune -o
+  -path './.nvm' -prune -o
+  # probar otro día (para que elimine todos los paths que puedan llevar a la carpeta)
+  # -path '../.git/' -prune -o
+  # -path '../node_modules' -prune -o
 )
 
 # Para buscar y abrir archivos
@@ -88,7 +97,7 @@ function directoryOpen() {
 
 # Para abrir workspaces
 function workspaceOpen() {
-    dopen "$1" && [[ -f .nvim-session.vim ]] && nvim -c 'source .nvim-session.vim'
+    dopen "$1" && [[ -f .nvim-session.vim ]] && nvim -c 'nvim'
 }
 
 
