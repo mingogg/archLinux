@@ -28,6 +28,7 @@ EXCLUDED=(
   -path './Coding' -prune -o
   -path './.tmux' -prune -o
   -path './.nvm' -prune -o
+  -path './.mozilla' -prune -o
   # probar otro día (para que elimine todos los paths que puedan llevar a la carpeta)
   # -path '../.git/' -prune -o
   # -path '../node_modules' -prune -o

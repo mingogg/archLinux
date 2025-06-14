@@ -10,10 +10,7 @@ return {
       local Rule = require("nvim-autopairs.rule")
 
       npairs.add_rules({
-        Rule("/**", " */", "javascript"),
-        Rule("/**", " */", "typescript"),
-        Rule("/**", " */", "typescriptreact"),
-        Rule("/**", " */", "javascriptreact"),
+        Rule("/**", " */", "javascript, typescript, typescriptreact, javascriptreact"),
       })
     end,
   },
