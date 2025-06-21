@@ -1,154 +1,85 @@
 {
+    "include": [
+        "~/.config/waybar/quicklinks.json",
+        "~/.config/waybar/modules.json"
+    ],
+
     "layer": "top",
     "position": "bottom",
+
+    "margin-left": 0,
+    "margin-right": 0,    
     "spacing": 0,
-    "height": 34,
+
     "modules-left": [
         "custom/logo",
-        "hyprland/workspaces"
+	      "hyprland/language",
     ],
+
     "modules-center": [
-        "clock"
+        "hyprland/workspaces",
     ],
+
     "modules-right": [
-	"hyprland/language",
-	"temperature",
-        "memory",
+        "custom/updates",
+        "battery",
         "network",
         "wireplumber",
-        "battery",
+        "clock",
+        "custom/exit",
     ],
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "on-click-right": "fullscreen",
-        "icon-theme": "WhiteSur",
-        "icon-size": 25,
-        "tooltip-format": "{title}"
-    },
-    "hyprland/workspaces": {
-        "on-click": "activate",
-        "format": "{icon}",
-        "format-icons": {
-            "default": "",
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9"
-        },
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
-        }
-    },
-   "memory": {
-        "interval": 5,
-        "format": "󰍛 {}%",
-        "max-length": 10
-    },
-    "tray": {
-        "spacing": 10
-    },
-    "clock": {
-        "tooltip-format": "{calendar}",
-	"format": " {:%a, %d %b ~ %I:%M %p}"
-    },
-    "network": {
-        "format-wifi" : "{icon}  {essid}",
-        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-        "format-ethernet": "󰀂",
-        "format-disconnected" : "󰖪",
-	"tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-        "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-	"tooltip-format-disconnected": "Disconnected",
-	"on-click": "~/.config/wofi/scripts/wifi.sh",
-	"interval": 5,
-	"nospacing": 1,
-    },
-    "wireplumber": {
-        "format": "{icon}",
-        "format-bluetooth": "󰂰",
-        "nospacing": 1,
-        "tooltip-format": "Volume : {volume}%",
-        "format-muted": "󰝟",
-        "format-icons": {
-            "headphone": "",
-            "default": ["󰖀","󰕾",""]
-        },
-        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
-        "scroll-step": 1
-    },
-    "custom/logo": {
-        "format": "  ",
-        "tooltip": true,
-	"tooltip-format": "Arch Linux",
-	"exec":"echo Arch"
-    },
-    "battery": {
-        "format": "{capacity}% {icon}",
-        "format-icons": {
-            "charging": [
-                "󰢜",
-                "󰂆",
-                "󰂇",
-                "󰂈",
-                "󰢝",
-                "󰂉",
-                "󰢞",
-                "󰂊",
-                "󰂋",
-                "󰂅"
-            ],
-            "default": [
-                "󰁺",
-                "󰁻",
-                "󰁼",
-                "󰁽",
-                "󰁾",
-                "󰁿",
-                "󰂀",
-                "󰂁",
-                "󰂂",
-                "󰁹"
-            ]
-        },
-        "format-full": "Charged ",
-        "interval": 5,
-        "states": {
-            "warning": 20,
-            "critical": 10
-        },
-        "tooltip": false
-    },
-    "custom/power": {
-        "format": "󰤆",
-        "tooltip": false,
-        "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh &"
-    },
-
-    "temperature": {
-	"hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
-	"format": " {temperatureC}°C",
-	"tooltip": true,
-	"critical-threshold": 80,
-	"format-critical": "🔥 {temperatureC}°C"
-    },
-
-
-
-"hyprland/language": {
-  "format": "{short}",
-  "keyboard-name": "logitech-wireless-keyboard-pid:4023"
 }
-
-
-
-}
+ //    "wlr/taskbar": {
+ //        "format": "{icon}",
+ //        "on-click": "activate",
+ //        "on-click-right": "fullscreen",
+ //        "icon-theme": "WhiteSur",
+ //        "icon-size": 25,
+ //        "tooltip-format": "{title}"
+ //    },
+ //    "hyprland/exworkspaces": {
+ //        "on-click": "activate",
+ //        "format": "{icon}",
+ //        "format-icons": {
+ //            "default": "",
+ //            "1": "1",
+ //            "2": "2",
+ //            "3": "3",
+ //            "4": "4",
+ //            "5": "5",
+ //            "6": "6",
+ //            "7": "7",
+ //            "8": "8",
+ //            "9": "9"
+ //        },
+ //        "persistent_workspaces": {
+ //            "1": [],
+ //            "2": [],
+ //            "3": [],
+ //            "4": [],
+ //            "5": []
+ //        }
+ //    },
+ //   "memory": {
+ //        "interval": 5,
+ //        "format": "󰍛 {}%",
+ //        "max-length": 10
+ //    },
+ //    "tray": {
+ //        "spacing": 10
+ //    },
+ //    "clock": {
+ //        "tooltip-format": "{calendar}",
+	// "format": " {:%a, %d %b ~ %I:%M %p}"
+ //    },
+ //    "network": {
+ //        "format-wifi" : "{icon}  {essid}",
+ //        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+ //        "format-ethernet": "󰀂",
+ //        "format-disconnected" : "󰖪",
+	//       "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+ //        "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+	//       "tooltip-format-disconnected": "Disconnected",
+	//       "interval": 5,
+	//       "nospacing": 1,
+ //    },

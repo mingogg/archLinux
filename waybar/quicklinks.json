@@ -1,0 +1,43 @@
+/*
+Define your quick links for the statusbar here.
+YOu can use icons from here https://fontawesome.com/search?ic=free
+You can reload waybar with SUPER + SHIFT + B
+*/
+{
+    "custom/quicklink_browser": {
+        "format": "",
+        "on-click": "~/.config/waybar/quicklinks/browser.sh",
+        "tooltip-format": "Open Browser"
+    },
+    "custom/quicklink_filemanager": {
+        "format": "",
+        "on-click": "~/.config/waybar/quicklinks/filemanager.sh",
+        "tooltip-format": "Open Filemanager"
+    },
+    "custom/quicklink_calculator": {
+        "format": "",
+        "on-click": "~/.config/ml4w/settings/calculator.sh",
+        "tooltip-format": "Open calculator"
+    },
+/*
+Don't remove the quicklinkempty
+*/
+    "custom/quicklinkempty": {
+    },
+/*
+Add your quicklinks in your desired order to the status bar
+*/
+    "group/quicklinks": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/quicklink_browser",
+            "custom/quicklink_filemanager",
+            "custom/quicklink_calculator",
+
+/*
+Don't remove the quicklinkempty
+*/
+            "custom/quicklinkempty"
+        ]
+    }
+}

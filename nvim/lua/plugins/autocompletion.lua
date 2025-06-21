@@ -59,6 +59,10 @@ return {
       fuzzy = { implementation = "lua" },
       signature = { enabled = true },
     },
+    config = function(_, opts)
+      require("blink.cmp").setup(opts)
+      require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/snippets" })
+    end
   },
   {
     "folke/todo-comments.nvim",

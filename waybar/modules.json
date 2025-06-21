@@ -1,0 +1,225 @@
+//  __  __           _       _
+// |  \/  | ___   __| |_   _| | ___  ___
+// | |\/| |/ _ \ / _` | | | | |/ _ \/ __|
+// | |  | | (_) | (_| | |_| | |  __/\__ \
+// |_|  |_|\___/ \__,_|\__,_|_|\___||___/
+
+{
+  // Wofi Application Launcher
+  "custom/logo": {
+    "format": "  ",
+    "tooltip-format": ""
+  },
+
+  // Keyboard Language
+  "hyprland/language": {
+    "format": "{short}",
+    "keyboard-name": "logitech-wireless-keyboard-pid:4023"
+  },
+
+  // Workspaces
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": false,
+    "format": "{}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 0
+    }
+  },
+
+  // Updates Count
+  "custom/updates": {
+    "format": "  {}",
+    "escape": true,
+    "return-type": "json",
+    "exec": "~/.config/hypr/scripts/updates.sh",
+    "on-click":"~/.config/hypr/scripts/updates-print.sh",
+    "on-click-right": "~/.config/hypr/scripts/updates-confirm.sh",
+    "interval": 3600,
+  },
+
+  // Battery
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["󰂎", "󰁻", "󰁾", "󰂀", "󰁹"]
+  },
+
+  // Network
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": " ",
+    "format-ethernet": "󰈀 {ifname}",
+    "format-disconnected": "󰖪 Disc.",
+    "tooltip-format": " ",
+    "tooltip-format-wifi": "  {ifname}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    "tooltip-format-ethernet": "󰈀  up: {bandwidthUpBits} down: {bandwidthDownBits}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+	  "on-click": "~/.config/wofi/scripts/wifi.sh",
+  },
+
+  // WirePlumber
+  "wireplumber": {
+    "format": "{icon}",
+    "format-bluetooth": "󰂰",
+    "nospacing": 1,
+    "tooltip-format": "Volume: {volume}%",
+    "format-muted": "󰖁",
+    "format-icons": {
+        "headphone": "",
+        "default": ["󰖀","󰕾",""]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "scroll-step": 1
+  },
+
+  // Clock
+  "clock": {
+    "format": "{:%H:%M}",
+    "timezone": "",
+    "tooltip-format": "{calendar}"
+  },
+
+  // Power Menu
+  "custom/exit": {
+    "format": "",
+    "on-click": "~/.config/hypr/scripts/wlogout.sh",
+    "on-click-right": "hyprlock",
+    "tooltip-format": "Left: Power menu\nRight: Lock screen"
+  },
+
+  // Wofi Application Launcher
+  "custom/appmenu": {
+    "format": "",
+    "on-click": "sleep 0.2;gtk_theme=papirus-dark wofi --show drun --prompt 'search app...'",
+    "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
+    "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
+  },
+  // Calculator
+  "custom/calculator": {
+    "format": "",
+    "on-click": "galculator",
+    "tooltip-format": "Open calculator"
+  },
+  // System tray
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+  // CPU
+  "cpu": {
+    "format": "/ C {usage}% ",
+    "on-click": "~/.config/ml4w/settings/system-monitor.sh"
+  },
+  // Memory
+  "memory": {
+    "format": "/ M {}% ",
+    "on-click": "~/.config/ml4w/settings/system-monitor.sh"
+  },
+  // Harddisc space used
+  "disk": {
+    "interval": 30,
+    "format": "D {percentage_used}% ",
+    "path": "/",
+    "on-click": "~/.config/ml4w/settings/system-monitor.sh"
+  },
+  // Group Hardware
+  "group/hardware": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "not-memory",
+      "transition-left-to-right": false
+    },
+    "modules": ["custom/system", "disk", "cpu", "memory", "hyprland/language"]
+  },
+  // Group Tools
+  "group/tools": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "not-memory",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/tools",
+      "custom/cliphist",
+      "custom/hypridle",
+      "custom/hyprshade"
+    ]
+  },
+  // Group Links
+  "group/links": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/chatgpt",
+      "custom/empty"
+    ]
+  },
+  // Group Settings
+  "group/settings": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "not-memory",
+      "transition-left-to-right": true
+    },
+    "modules": [
+      "custom/settings",
+      "custom/waybarthemes",
+      "custom/wallpaper"
+    ]
+  },
+  // Hyprland Window
+  "hyprland/window": {
+    "max-length": 60,
+    "rewrite": {
+      "(.*) - Brave": "$1",
+      "(.*) - Chromium": "$1",
+      "(.*) - Brave Search": "$1",
+      "(.*) - Outlook": "$1",
+      "(.*) Microsoft Teams": "$1"
+    },
+    "separate-outputs": true
+  },
+  // Taskbar
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+  },
+  "temperature": {
+	  "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+	  "format": " {temperatureC}°C",
+	  "tooltip": true,
+	  "critical-threshold": 80,
+	  "format-critical": "🔥 {temperatureC}°C"
+  },
+  // Other
+  "user": {
+    "format": "{user}",
+    "interval": 60,
+    "icon": false
+  },
+  // Empty
+  "custom/empty": {
+    "format": ""
+  },
+}

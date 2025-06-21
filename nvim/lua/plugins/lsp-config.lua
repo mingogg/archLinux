@@ -122,7 +122,10 @@ return {
 
     local capabilities = require("blink.cmp").get_lsp_capabilities()
     local servers = {
-      ts_ls = {},
+      tsserver = {},
+      html = {},
+      cssls = {},
+
       lua_ls = {
         settings = {
           Lua = {
@@ -135,8 +138,7 @@ return {
       },
     }
 
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
+    local ensure_installed = {
       'stylua',
 
       'prettier',
@@ -153,8 +155,10 @@ return {
       'stylelint-lsp',
       'tailwindcss-language-server',
 
-      'html-lsp'
-    })
+      'typescript-language-server',
+      'html-lsp',
+      'css-lsp'
+    }
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
     require("mason-lspconfig").setup({

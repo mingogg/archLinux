@@ -1,0 +1,36 @@
+{
+    "label" : "poweroff",
+    "action" : "~/.config/hypr/scripts/power.sh poweroff",
+    "text" : "Power Off",
+    "keybind" : "p"
+}
+{
+    "label" : "suspend",
+    "action" : "~/.config/hypr/scripts/power.sh suspend",
+    "text" : "Suspend",
+    "keybind" : "s"
+}
+{
+    "label" : "hibernate",
+    "action" : "~/.config/hypr/scripts/power.sh hibernate",
+    "text" : "Hibernate",
+    "keybind" : "h"
+}
+{
+    "label" : "reboot",
+    "action" : "~/.config/hypr/scripts/power.sh reboot",
+    "text" : "Restart",
+    "keybind" : "r"
+}
+{
+    "label" : "lock",
+    "action" : "~/.config/hypr/scripts/power.sh lock",
+    "text" : "Lock",
+    "keybind" : "w"
+}
+{
+    "label" : "logout",
+    "action" : "~/.config/hypr/scripts/power.sh logout",
+    "text" : "Log Out",
+    "keybind" : "l"
+}

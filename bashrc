@@ -1,18 +1,23 @@
-#
 # ~/.bashrc
-#
-#neofetch
 
+# neofetch
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 alias hconf="nvim ~/.config/hypr/hyprland.conf"
 alias rwb="pkill -x waybar || true; sleep 0.2; waybar & disown"
 alias fopen="fileOpen"
 alias dopen="directoryOpen"
 alias wopen="workspaceOpen"
 alias ns="nvim -c 'source .nvim-session.vim'"
+alias wofi-launch='~/.config/wofi/wofi-launcher.sh'
+alias wofi-rebuild='~/.config/wofi/build-entries.sh'
+alias wofi-edit='~/.config/wofi/edit-entries.sh'
 
+# TODO: Se puede agregar que elimine el path entero de carpetas como ../.git/ o ../node_modules, etc...
 # TODO: Se puede hacer que wopen abra la carpeta y ejecute nvim, en lugar de wopen
 # ya que se tiene neo-tree y fuzzy finder
-
+# TODO: Se puede agregar que también en el prompt de git tenga colores, solo cuando hay cosas en el status ej X=rojo, ~=amarillo, etc...
 
 # Exclusion de carpetas de busqueda para fopen y dopen
 EXCLUDED=(
@@ -35,7 +40,6 @@ EXCLUDED=(
   # -path '../node_modules' -prune -o
 )
 
-# Para buscar y abrir archivos
 function fileOpen() {
     local results
     IFS=$'\n' read -d '' -r -a results < <(
@@ -64,7 +68,6 @@ function fileOpen() {
     fi
 }
 
-# Para buscar y abrir directorios
 function directoryOpen() {
     local dirs
     IFS=$'\n' read -d '' -r -a dirs < <(
@@ -97,30 +100,40 @@ function directoryOpen() {
     fi
 }
 
-# Para abrir workspaces
 function workspaceOpen() {
-    dopen "$1" && [[ -f .nvim-session.vim ]] && nvim -c 'nvim'
+    dopen "$1" && nvim
 }
 
+# # Prompt de starship
+# export STARSHIP_CONFIG=~/.config/starship/starship.toml
+# eval "$(starship init bash)"
+#
+# # If not running interactively, don't do anything
+# [[ $- != *i* ]] && return
 
 
-# Prompt de starship
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
-eval "$(starship init bash)"
+parse_git_info() {
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    local branch status added modified untracked
+    status=$(git status --porcelain 2>/dev/null)
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+    if [[ -n "$status" ]]; then
+      branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+      added=$(echo "$status" | grep '^A' | wc -l)
+      modified=$(echo "$status" | grep '^ M' | wc -l)
+      untracked=$(echo "$status" | grep '^??' | wc -l)
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-PS1='\[\e[0;32m\]\u@\h:\w\$ \[\e[0m\]'
+      echo -n "  git: $branch ✘"
+      [[ $modified -gt 0 ]] && echo -n " ~$modified"
+      [[ $untracked -gt 0 ]] && echo -n " ?$untracked"
+    fi
+  fi
+}
 
-# Wofi launcher scripts
-alias wofi-launch='~/.config/wofi/wofi-launcher.sh'
-alias wofi-rebuild='~/.config/wofi/build-entries.sh'
-alias wofi-edit='~/.config/wofi/edit-entries.sh'
-
+ARCH_BLUE='\[\e[38;2;23;147;209m\]'
+RESET='\[\e[0m\]'
+PS1='\n[\u@\h \w$(parse_git_info)]\n'"$ARCH_BLUE"'󰣇 '"$RESET"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
