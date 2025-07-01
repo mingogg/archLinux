@@ -14,7 +14,7 @@
   // Keyboard Language
   "hyprland/language": {
     "format": "{short}",
-    "keyboard-name": "logitech-wireless-keyboard-pid:4023"
+    "keyboard-name": "bt3.0_1-keyboard"
   },
 
   // Workspaces
@@ -39,9 +39,7 @@
     "escape": true,
     "return-type": "json",
     "exec": "~/.config/hypr/scripts/updates.sh",
-    "on-click":"~/.config/hypr/scripts/updates-print.sh",
-    "on-click-right": "~/.config/hypr/scripts/updates-confirm.sh",
-    "interval": 3600,
+    "interval": 3600
   },
 
   // Battery
@@ -70,7 +68,7 @@
     "tooltip-format-ethernet": "󰈀  up: {bandwidthUpBits} down: {bandwidthDownBits}",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
-	  "on-click": "~/.config/wofi/scripts/wifi.sh",
+    "on-click": "~/.config/wofi/scripts/wifi.sh"
   },
 
   // WirePlumber
@@ -81,8 +79,8 @@
     "tooltip-format": "Volume: {volume}%",
     "format-muted": "󰖁",
     "format-icons": {
-        "headphone": "",
-        "default": ["󰖀","󰕾",""]
+      "headphone": "",
+      "default": ["󰖀", "󰕾", ""]
     },
     "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
     "scroll-step": 1
@@ -90,9 +88,20 @@
 
   // Clock
   "clock": {
-    "format": "{:%H:%M}",
-    "timezone": "",
-    "tooltip-format": "{calendar}"
+    "format": "{:%R}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    }
   },
 
   // Power Menu
@@ -166,10 +175,7 @@
   // Group Links
   "group/links": {
     "orientation": "horizontal",
-    "modules": [
-      "custom/chatgpt",
-      "custom/empty"
-    ]
+    "modules": ["custom/chatgpt", "custom/empty"]
   },
   // Group Settings
   "group/settings": {
@@ -179,11 +185,7 @@
       "children-class": "not-memory",
       "transition-left-to-right": true
     },
-    "modules": [
-      "custom/settings",
-      "custom/waybarthemes",
-      "custom/wallpaper"
-    ]
+    "modules": ["custom/settings", "custom/waybarthemes", "custom/wallpaper"]
   },
   // Hyprland Window
   "hyprland/window": {
@@ -203,14 +205,14 @@
     "icon-size": 18,
     "tooltip-format": "{title}",
     "on-click": "activate",
-    "on-click-middle": "close",
+    "on-click-middle": "close"
   },
   "temperature": {
-	  "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
-	  "format": " {temperatureC}°C",
-	  "tooltip": true,
-	  "critical-threshold": 80,
-	  "format-critical": "🔥 {temperatureC}°C"
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+    "format": " {temperatureC}°C",
+    "tooltip": true,
+    "critical-threshold": 80,
+    "format-critical": "🔥 {temperatureC}°C"
   },
   // Other
   "user": {
@@ -221,5 +223,5 @@
   // Empty
   "custom/empty": {
     "format": ""
-  },
+  }
 }

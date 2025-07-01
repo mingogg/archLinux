@@ -5,8 +5,6 @@ vim.cmd("set shiftwidth=2")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", { desc = "Buffer siguiente" })
-vim.keymap.set("n", "<S-Tab>", ":bprev<CR>", { desc = "Buffer anterior" })
 
 vim.g.have_nerd_font = true
 

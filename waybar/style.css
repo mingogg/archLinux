@@ -2,7 +2,7 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: 'Adwaita Sans', 'Liberation Sans', sans-serif;
+  font-family: "Adwaita Sans", "Liberation Sans", sans-serif;
 }
 
 window#waybar {
@@ -36,11 +36,11 @@ window#waybar {
 }
 
 #workspaces button:hover {
-  color: black
+  color: black;
 }
 
 #workspaces button.urgent {
-  background-color: #f38ba8;
+  background-color: #1793d1;
 }
 
 #custom-updates,
@@ -103,10 +103,6 @@ window#waybar {
 #battery.critical,
 #battery.urgent {
   color: #ffff00;
-}
-
-#battery.charging {
-  color: #181825;
 }
 
 #wireplumber {

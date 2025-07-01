@@ -14,30 +14,28 @@ alias wofi-launch='~/.config/wofi/wofi-launcher.sh'
 alias wofi-rebuild='~/.config/wofi/build-entries.sh'
 alias wofi-edit='~/.config/wofi/edit-entries.sh'
 
-# TODO: Se puede agregar que elimine el path entero de carpetas como ../.git/ o ../node_modules, etc...
-# TODO: Se puede hacer que wopen abra la carpeta y ejecute nvim, en lugar de wopen
-# ya que se tiene neo-tree y fuzzy finder
 # TODO: Se puede agregar que también en el prompt de git tenga colores, solo cuando hay cosas en el status ej X=rojo, ~=amarillo, etc...
 
 # Exclusion de carpetas de busqueda para fopen y dopen
 EXCLUDED=(
-  -path './.local' -prune -o
-  -path './.cache' -prune -o
-  -path './.local/share/Trash' -prune -o
-  -path './.vscode/extensions' -prune -o
-  -path './dev/personal/nbaShowcase/node_modules' -prune -o
-  -path './dev/personal/spendly/frontend/node_modules' -prune -o
-  -path './Coding/Python/TODO List APP/front/node_modules' -prune -o
-  -path './dev/personal/spendly/backend/.venv' -prune -o
-  -path './.npm' -prune -o
-  -path './Coding' -prune -o
-  -path './.tmux' -prune -o
-  -path './.nvm' -prune -o
-  -path './.mozilla' -prune -o
-  -path './.config/BraveSoftware/Brave-Browser' -prune -o
-  # probar otro día (para que elimine todos los paths que puedan llevar a la carpeta)
-  # -path '../.git/' -prune -o
-  # -path '../node_modules' -prune -o
+  -path '*/.git'                                            -prune -o
+  -path './.local'                                          -prune -o
+  -path './.cache'                                          -prune -o
+  -path './.nvm'                                            -prune -o
+  -path './.npm'                                            -prune -o
+  -path './.tmux'                                           -prune -o
+  -path './Coding'                                          -prune -o
+  -path './.mozilla'                                        -prune -o
+  -path '*/node_modules'                                    -prune -o
+  -path './.config/Postman'                                 -prune -o
+  -path './.config/discord'                                 -prune -o
+  -path './.local/share/Trash'                              -prune -o
+  -path './.vscode/extensions'                              -prune -o
+  -path './dev/personal/spendly/backend/.venv'              -prune -o
+  -path './.config/BraveSoftware/Brave-Browser'             -prune -o
+  -path './dev/personal/nbaShowcase/node_modules'           -prune -o
+  -path './dev/personal/spendly/frontend/node_modules'      -prune -o
+  -path './Coding/Python/TODO List APP/front/node_modules'  -prune -o
 )
 
 function fileOpen() {

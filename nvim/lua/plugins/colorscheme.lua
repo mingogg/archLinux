@@ -22,7 +22,7 @@ return {
   -- }
   {
     "rose-pine/nvim",
-    name = "rose-pine-moon",
+    name = "rose-pine",
     config = function()
       require("rose-pine").setup({
         variant = "moon",
