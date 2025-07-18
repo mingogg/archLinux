@@ -14,6 +14,8 @@ return {
     config = function()
       local cmp = require("cmp")
       require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip").filetype_extend("javascriptreact", { "html" })
+      require("luasnip").filetype_extend("typescriptreact", { "html" })
 
       cmp.setup({
         snippet = {
@@ -35,10 +37,10 @@ return {
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
-          { name = "luasnip" }, -- For luasnip users.
+          { name = "luasnip" },
         }, {
           { name = "buffer" },
-        }),
+        })
       })
     end,
   },

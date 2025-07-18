@@ -13,8 +13,7 @@
 
   // Keyboard Language
   "hyprland/language": {
-    "format": "{short}",
-    "keyboard-name": "bt3.0_1-keyboard"
+    "format": "{short}"
   },
 
   // Workspaces

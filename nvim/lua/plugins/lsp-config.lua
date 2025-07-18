@@ -21,7 +21,8 @@ return {
 
       local lspconfig = require("lspconfig")
       lspconfig.ts_ls.setup({
-        capabilities = capabilities
+        capabilities = capabilities,
+        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "jsx", "tsx" },
       })
       lspconfig.solargraph.setup({
         capabilities = capabilities

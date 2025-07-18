@@ -18,13 +18,15 @@ alias wofi-edit='~/.config/wofi/edit-entries.sh'
 
 # Exclusion de carpetas de busqueda para fopen y dopen
 EXCLUDED=(
+  -path '*/venv'                                            -prune -o
   -path '*/.git'                                            -prune -o
-  -path './.local'                                          -prune -o
-  -path './.cache'                                          -prune -o
   -path './.nvm'                                            -prune -o
   -path './.npm'                                            -prune -o
   -path './.tmux'                                           -prune -o
+  -path './.local'                                          -prune -o
+  -path './.cache'                                          -prune -o
   -path './Coding'                                          -prune -o
+  -path '*/.eclipse'                                        -prune -o
   -path './.mozilla'                                        -prune -o
   -path '*/node_modules'                                    -prune -o
   -path './.config/Postman'                                 -prune -o

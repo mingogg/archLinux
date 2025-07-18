@@ -12,3 +12,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.lsp.buf.format({ bufnr = event.buf, timeout_ms = 500 })
   end,
 })
+
+vim.api.nvim_create_user_command('W', 'w', {})
